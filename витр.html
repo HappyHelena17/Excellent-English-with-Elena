@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ExcellentEnglish with Elena — Обучающие материалы</title>
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #ff9ec6, #a2d2ff);
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --text-dark: #3a3a3a;
+      --btn-pink: #ff6b9d;
+      --btn-blue: #7ac7ff;
+      --shadow: 0 6px 20px rgba(0,0,0,0.12);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Tahoma', 'Helvetica Neue', sans-serif;
+      background: var(--primary-gradient) !important;
+      color: var(--text-dark);
+      padding: 20px;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 0 auto 50px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .tagline {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #2a2a2a;
+      max-width: 900px;
+      margin: 0 auto 30px;
+      line-height: 1.5;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      opacity: 0.88;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    /* === БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС" === */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      color: var(--btn-pink);
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 0.98rem;
+      color: #555;
+    }
+
+    /* === БЛОК "КАК ПРОХОДИТ ОБУЧЕНИЕ" === */
+    .process {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-top: 30px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 220px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: var(--btn-pink);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 0 auto 16px;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 0.98rem;
+      color: #555;
+    }
+
+    /* === ВИТРИНА === */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #f8f8f8;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #2a2a2a;
+    }
+
+    .product-desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--btn-pink);
+      margin-bottom: 16px;
+    }
+
+    .btn-buy {
+      background: var(--btn-pink);
+      color: white;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+    }
+
+    .btn-buy:hover {
+      background: #ff4785;
+      transform: scale(1.03);
+    }
+
+    /* === МОДАЛЬНОЕ ОКНО === */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: var(--radius);
+      max-width: 92%;
+      max-height: 92vh;
+      width: 820px;
+      overflow: hidden;
+      box-shadow: 0 22px 55px rgba(0,0,0,0.3);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      padding: 22px 26px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .modal-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+    .modal-price {
+      font-size: 1.45rem;
+      color: var(--btn-pink);
+      font-weight: bold;
+    }
+
+    .modal-body {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      max-height: 70vh;
+      overflow: hidden;
+    }
+
+    .carousel {
+      flex: 1;
+      min-width: 300px;
+      background: #fafafa;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 420px;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.85);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+
+    .modal-description {
+      flex: 1;
+      padding: 26px;
+      overflow-y: auto;
+      max-height: 420px;
+    }
+
+    .modal-desc-text {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      white-space: pre-line;
+      color: #333;
+    }
+
+    .modal-footer {
+      padding: 20px 26px;
+      border-top: 1px solid #f0f0f0;
+      text-align: right;
+    }
+
+    .btn-modal-buy {
+      background: var(--btn-blue);
+      color: white;
+      border: none;
+      padding: 13px 34px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-modal-buy:hover {
+      background: #5abaff;
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #f5f5f5;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      transition: background 0.2s;
+    }
+
+    .btn-close:hover {
+      background: #e8e8e8;
+    }
+
+    /* === СТИЛИ ДЛЯ ОТЗЫВОВ === */
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .review-card::before {
+      content: """;
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 4rem;
+      color: #f5f5f5;
+      font-family: serif;
+      line-height: 1;
+    }
+
+    .review-text {
+      font-style: italic;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e0f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #7ac7ff;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .author-info h4 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .author-info p {
+      font-size: 0.88rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .tagline { font-size: 1.15rem; }
+      .section-title { font-size: 1.6rem; }
+      .steps { flex-direction: column; }
+      .process { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ExcellentEnglish with Elena</h1>
+    <p class="tagline">
+      Весёлые интерактивные книги, игры, мультфильмы, картинки — всё то, что помогает детям полюбить английский язык 🌈📚
+    </p>
+    <p class="subtitle">Учебные материалы и игры от педагога с 20-летним стажем</p>
+  </header>
+
+  <!-- === БЛОК: ПОЧЕМУ ВЫБИРАЮТ НАС === -->
+  <section>
+    <h2 class="section-title">Почему родители выбирают нас</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3 class="feature-title">Красиво и по-детски</h3>
+        <p class="feature-desc">Нежные иллюстрации, персонажи с характером, анимация в стиле Pixar — всё создано с любовью к детям.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3 class="feature-title">Эффективно</h3>
+        <p class="feature-desc">Методика опирается на естественное усвоение языка через игру, историю и эмоции — без зубрёжки.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧩</div>
+        <h3 class="feature-title">Гибко</h3>
+        <p class="feature-desc">Материалы подходят для занятий с репетитором, в школе или дома — с родителями. Можно комбинировать!</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3 class="feature-title">Проверено временем</h3>
+        <p class="feature-desc">20+ лет преподавания, сотни учеников, живые отзывы — мы знаем, как сделать английский радостью.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- === БЛОК: КАК ПРОХОДИТ ОБУЧЕНИЕ === -->
+  <section>
+    <h2 class="section-title">Как проходит обучение</h2>
+    <div class="process">
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Знакомство</h3>
+          <p class="step-desc">Дети встречают персонажей (Рапунцель, Эльза, кот Барсик) и погружаются в историю.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Играем и слушаем</h3>
+          <p class="step-desc">Смотрим мини-мультфильмы, играем в интерактивные задания, поём песенки — язык «втекает» легко.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Творим</h3>
+          <p class="step-desc">Рисуем, клеим, придумываем продолжение историй — закрепляем слова через действие.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3 class="step-title">Гордимся!</h3>
+          <p class="step-desc">Создаём книжку, спектакль или аудиосказку — и делимся с родителями. Мотивация — на максимуме!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === ВИТРИНА ТОВАРОВ === -->
+  <section>
+    <h2 class="section-title">Наши материалы</h2>
+
+    <!-- === РАЗДЕЛ 1: АНГЛИЙСКИЙ ПО ТЕМАМ === -->
+    <h3 style="font-size: 1.6rem; margin: 40px 0 20px; text-align: center; color: #2a2a2a;">Английский по темам</h3>
+    <div class="products-grid">
+      <div class="product-card" data-product-id="4">
+        <img src="https://via.placeholder.com/300x180/ffd1dc/000000?text=Daily+Routine" alt="Daily Routine — распорядок дня" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Daily Routine</h3>
+          <p class="product-desc">Распорядок дня: от wake up до go to bed. С играми, песенкой и мини-комиксом.</p>
+          <div class="product-price">550 ₽</div>
+          <button class="btn-buy" onclick="openModal(4)">Подробнее</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-product-id="5">
+        <img src="https://via.placeholder.com/300x180/d0f0ff/000000?text=Hobby+%26+Family" alt="Hobby & Family" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Hobby & Family</h3>
+          <p class="product-desc">Хобби и семья: 40+ слов, семейное древо, интервью «Расскажи о себе».</p>
+          <div class="product-price">550 ₽</div>
+          <button class="btn-buy" onclick="openModal(5)">Подробнее</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-product-id="6">
+        <img src="https://via.placeholder.com/300x180/fde6ff/000000?text=Places+in+the+City" alt="Places in the City" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Places in the City</h3>
+          <p class="product-desc">Городские локации: карта, квест «Помоги Рапунцель найти библиотеку», диалоги в магазине.</p>
+          <div class="product-price">600 ₽</div>
+          <button class="btn-buy" onclick="openModal(6)">Подробнее</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-product-id="7">
+        <img src="https://via.placeholder.com/300x180/e6f7ff/000000?text=School" alt="School — школа" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">School</h3>
+          <p class="product-desc">Школьные предметы, класс, расписание. С игрой «Угадай предмет по звуку» (bell, pencil case...).</p>
+          <div class="product-price">550 ₽</div>
+          <button class="btn-buy" onclick="openModal(7)">Подробнее</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === РАЗДЕЛ 2: ГРАММАТИКА === -->
+    <h3 style="font-size: 1.6rem; margin: 50px 0 20px; text-align: center; color: #2a2a2a;">Грамматика</h3>
+    <div class="products-grid">
+      <div class="product-card" data-product-id="8">
+        <img src="https://via.placeholder.com/300x180/ffe0e6/000000?text=Предлоги" alt="Предлоги места и времени" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Предлоги</h3>
+          <p class="product-desc">Места (in, on, under) + время (at, on, in). С анимированными сценками и игрой «Где кот?»</p>
+          <div class="product-price">650 ₽</div>
+          <button class="btn-buy" onclick="openModal(8)">Подробнее</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-product-id="9">
+        <img src="https://via.placeholder.com/300x180/d6eaff/000000?text=Времена" alt="Времена английского глагола" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Времена</h3>
+          <p class="product-desc">Present Simple/Past Simple/Future: схемы, мини-истории, карточки «Что было/будет?»</p>
+          <div class="product-price">850 ₽</div>
+          <button class="btn-buy" onclick="openModal(9)">Подробнее</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-product-id="10">
+        <img src="https://via.placeholder.com/300x180/fde0ff/000000?text=Множественное+число" alt="Множественное число существительных" class="product-img">
+        <div class="product-info">
+          <h3 class="product-title">Множественное число</h3>
+          <p class="product-desc">Правила + исключения. Игра «Собери пару: cat — cats», интерактивная викторина.</p>
+          <div class="product-price">500 ₽</div>
+          <button class="btn-buy" onclick="openModal(10)">Подробнее</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === БЛОК: ОТЗЫВЫ — В САМОМ КОНЦЕ === -->
+  <section class="reviews" style="margin-top: 60px;">
+    <h2 class="section-title">Отзывы родителей</h2>
+    <div class="review-grid">
+      <div class="review-card">
+        <p class="review-text">Моя дочь (7 лет) раньше плакала на уроках английского. С материалами Елены она теперь сама берёт тетрадку и говорит: «Мам, давай поиграем в English Adventure!» Это чудо 🌸</p>
+        <div class="review-author">
+          <div class="avatar">👩</div>
+          <div class="author-info">
+            <h4>Анна, мама Алисы</h4>
+            <p>занимаются 8 месяцев</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">Заказали игру «Let’s Talk!» для подростковой группы. Дети забыли, что это «урок» — думали, что просто веселятся. А за 40 минут отработали 30 фраз! Спасибо за гениальный подход.</p>
+        <div class="review-author">
+          <div class="avatar">👩‍🏫</div>
+          <div class="author-info">
+            <h4>Мария, репетитор</h4>
+            <p>использует материалы в работе</p>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">Флешкарты «Story Time» — наш хит! Сын (9 лет) устраивает целые спектакли с участием принцесс и драконов, а заодно незаметно учит глаголы и связки. Даже младшая сестра подтягивается 😊</p>
+        <div class="review-author">
+          <div class="avatar">👩‍👧‍👦</div>
+          <div class="author-info">
+            <h4>Ольга, мама Дмитрия и Кати</h4>
+            <p>занимаются дома</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === МОДАЛЬНОЕ ОКНО === -->
+  <div class="modal" id="productModal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="btn-close" onclick="closeModal()">&times;</button>
+
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Название товара</h2>
+        <div class="modal-price" id="modalPrice">0 ₽</div>
+      </div>
+
+      <div class="modal-body">
+        <div class="carousel">
+          <div class="carousel-inner" id="carouselInner"></div>
+          <div class="carousel-nav">
+            <button class="carousel-btn" id="prevBtn">&lt;</button>
+            <button class="carousel-btn" id="nextBtn">&gt;</button>
+          </div>
+        </div>
+
+        <div class="modal-description">
+          <p class="modal-desc-text" id="modalDescription"></p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#" id="buyLink" target="_blank">
+          <button class="btn-modal-buy">Оформить заказ</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const products = {
+      // === СТАРЫЕ ТОВАРЫ (1–3) ===
+      1: {
+        title: "Игра «Let's Talk!»",
+        price: "1 200 ₽",
+        description: `Интерактивная игра для развития разговорных навыков.\n\n🎯 Возраст: 12+\n🎯 Формат: PDF + печатная версия (A4)\n🎯 В комплекте:\n• Игровое поле (2 варианта сложности)\n• 120 карточек с вопросами и ситуациями\n• Правила на русском и английском\n• QR-коды к аудиоподкастам\n\n💡 Идеально для мини-групп и индивидуальных уроков!`,
+        images: [
+          "https://via.placeholder.com/700x420/ff9ec6/ffffff?text=Игровое+поле",
+          "https://via.placeholder.com/700x420/ffd8e8/000000?text=Карточки+с+вопросами",
+          "https://via.placeholder.com/700x420/ffe6f2/000000?text=Пример+игры+в+классе"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+      2: {
+        title: "Тетрадь «English Adventure»",
+        price: "850 ₽",
+        description: `Увлекательная рабочая тетрадь для детей 8–12 лет.\n\n📚 10 тем: Animals, Weather, Hobbies, Travel...\n✏️ Задания: раскраски, кроссворды, мини-комиксы, аудиодиктант\n🎁 В комплекте: 20 стикеров-поощрений + QR-код к подкасту\n🖨️ Формат: PDF (можно распечатать) + печатная версия по запросу`,
+        images: [
+          "https://via.placeholder.com/700x420/a2d2ff/ffffff?text=Обложка+тетради",
+          "https://via.placeholder.com/700x420/cce6ff/000000?text=Страница+с+заданиями",
+          "https://via.placeholder.com/700x420/e6f4ff/000000?text=Стикер-пак"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+      3: {
+        title: "Флешкарты «Story Time»",
+        price: "650 ₽",
+        description: `Карточки для развития Narrative Skills (умения рассказывать истории).\n\n🃏 72 карточки:\n• 24 персонажа (Rapunzel, Elsa, мальчик с котом и др.)\n• 24 глагола действия (fly, dance, argue, help...)\n• 24 соединительных слова (but, then, because, finally...)\n\n🎲 Игры в комплекте: «Crazy Story», «Fix the Plot», «Emotion Match»\n📦 Формат: PDF (для печати) + PNG отдельно`,
+        images: [
+          "https://via.placeholder.com/700x420/ffb8b8/000000?text=Карточки+персонажей",
+          "https://via.placeholder.com/700x420/ffd6d6/000000?text=Карточки+глаголов",
+          "https://via.placeholder.com/700x420/fff0f0/000000?text=Пример+истории"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+
+      // === НОВЫЕ ТОВАРЫ: АНГЛИЙСКИЙ ПО ТЕМАМ ===
+      4: {
+        title: "Daily Routine",
+        price: "550 ₽",
+        description: `Тема «Распорядок дня» для детей 6–10 лет.\n\n⏰ В комплекте:\n• Мини-комикс: «A Day with Elsa»\n• Песенка-хоровод: «I Wake Up, I Brush My Teeth...» (аудио + ноты)\n• Интерактивная таблица: «Собери свой день»\n• 2 игры: «What time is it?» и «Missing Verb»\n\n🎨 Стиль: нежные пастельные тона, персонажи в утренних сценках.`,
+        images: [
+          "https://via.placeholder.com/700x420/ffd1dc/000000?text=Мини-комикс+«A+Day+with+Elsa»",
+          "https://via.placeholder.com/700x420/ffe0e8/000000?text=Таблица+распорядка+дня",
+          "https://via.placeholder.com/700x420/fff0f5/000000?text=Карточки+с+глаголами"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+      5: {
+        title: "Hobby & Family",
+        price: "550 ₽",
+        description: `Две темы в одном наборе: «Хобби» и «Семья».\n\n👨‍👩‍👧‍👦 Что внутри:\n• Семейное древо с наклейками (parents, grandparents, cousins)\n• Колесо хобби: spin & say («I like swimming»)\n• Карточки «My Family Interview»\n• Аудиодиктант: «This is my brother Tom. He loves drawing...»\n\n💖 Акцент на личном: дети рассказывают о своей семье и увлечениях.`,
+        images: [
+          "https://via.placeholder.com/700x420/d0f0ff/000000?text=Семейное+древо+с+наклейками",
+          "https://via.placeholder.com/700x420/e0f5ff/000000?text=Колесо+хобби",
+          "https://via.placeholder.com/700x420/f0faff/000000?text=Карточки+для+интервью"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+      6: {
+        title: "Places in the City",
+        price: "600 ₽",
+        description: `Погружение в городскую среду через игру.\n\n🏙️ В наборе:\n• Интерактивная карта города (с аптекой, парком, библиотекой...)\n• Квест: «Помоги Рапунцель найти библиотеку» (prepositions + directions)\n• Диалоги: «Where is the museum?», «How can I get to the park?»\n• Игра «Build Your City» — конструктор локаций\n\n🎯 Развивает не только лексику, но и пространственное мышление.`,
+        images: [
+          "https://via.placeholder.com/700x420/fde6ff/000000?text=Интерактивная+карта+города",
+          "https://via.placeholder.com/700x420/fef0ff/000000?text=Квест+«Найди+библиотеку»",
+          "https://via.placeholder.com/700x420/fff5fd/000000?text=Диалоги+в+магазинах"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+      7: {
+        title: "School",
+        price: "550 ₽",
+        description: `Школьная тема — с юмором и атмосферой класса.\n\n🎒 Содержание:\n• Плакат: «School Subjects» с забавными иконками (Math = 🧮, Art = 🎨)\n• Игра «Guess the Subject by Sound»: bell, pencil sharpener, ruler tapping...\n• Диалоги: «What’s your favourite subject?», «Can I go to the toilet?» 😄\n• Мини-проект: «My Dream School»\n\n🎓 Подходит для первого года обучения.`,
+        images: [
+          "https://via.placeholder.com/700x420/e6f7ff/000000?text=Плакат+«School+Subjects»",
+          "https://via.placeholder.com/700x420/f0faff/000000?text=Игра+«Угадай+по+звуку»",
+          "https://via.placeholder.com/700x420/f8fdff/000000?text=Диалоги+в+классе"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+
+      // === НОВЫЕ ТОВАРЫ: ГРАММАТИКА ===
+      8: {
+        title: "Предлоги места и времени",
+        price: "650 ₽",
+        description: `Грамматика без скуки — через сценки и персонажей!\n\n📍 Предлоги места (in, on, under, behind...):\n• Мини-мультфильм: «Where is the kitten?»\n• Игра: «Hide & Seek» — спрячь игрушку и опиши место\n• Раскраска: «Put the apple ON the table»\n\n🕒 Предлоги времени (at, on, in):\n• Календарь-пазл: «at 7 o’clock», «on Monday», «in summer»\n• Карточки-ситуации: «My birthday is ___ June»\n\n🧠 Всё — с визуальной опорой и повторением в игре.`,
+        images: [
+          "https://via.placeholder.com/700x420/ffe0e6/000000?text=Мини-мультфильм+«Где+котёнок?»",
+          "https://via.placeholder.com/700x420/fff0f5/000000?text=Игра+«Спрячь+игрушку»",
+          "https://via.placeholder.com/700x420/fff8fa/000000?text=Календарь-пазл+для+времени"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+      9: {
+        title: "Времена английского глагола",
+        price: "850 ₽",
+        description: `Present, Past, Future Simple — понятно даже для начинающих.\n\n⏳ Что в комплекте:\n• Визуальные схемы-«дорожки времени»\n• Мини-истории: «Elsa’s Day» (Present), «Yesterday I...» (Past), «Tomorrow I will...» (Future)\n• Карточки с глаголами: 1-я/2-я/3-я форма (go → went → gone)\n• Игра «Time Machine»: перенеси фразу в прошлое/будущее\n\n🎓 Для детей 9+ и подростков. Можно использовать на уроках или дома.`,
+        images: [
+          "https://via.placeholder.com/700x420/d6eaff/000000?text=Схема+«Дорожка+времени»",
+          "https://via.placeholder.com/700x420/e6f0ff/000000?text=Мини-истории+в+3+временах",
+          "https://via.placeholder.com/700x420/f2f8ff/000000?text=Игра+«Машина+времени»"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      },
+      10: {
+        title: "Множественное число существительных",
+        price: "500 ₽",
+        description: `Правила + исключения — в игровой форме.\n\n🐾 В наборе:\n• Плакат: «How to make plurals?» с примерами (cat → cats, bus → buses, child → children)\n• Игра «Match the Pair»: картинка → слово (fox → foxes)\n• Викторина: «Which is correct?» (quiz с обратной связью)\n• Творческое задание: «Draw your zoo» — подпиши животных во множественном числе\n\n🦊 Подходит для детей 6–10 лет. Акцент на визуальной памяти и повторении.`,
+        images: [
+          "https://via.placeholder.com/700x420/fde0ff/000000?text=Плакат+«How+to+make+plurals?»",
+          "https://via.placeholder.com/700x420/fef0ff/000000?text=Игра+«Собери+пару»",
+          "https://via.placeholder.com/700x420/fff8fd/000000?text=Зоопарк+с+множественным+числом"
+        ],
+        buyUrl: "https://t.me/HAPPYHELENGR"
+      }
+    };
+
+    let currentSlide = 0;
+
+    function openModal(productId) {
+      const product = products[productId];
+      if (!product) return;
+
+      document.getElementById("modalTitle").textContent = product.title;
+      document.getElementById("modalPrice").textContent = product.price;
+      document.getElementById("modalDescription").textContent = product.description;
+      document.getElementById("buyLink").href = product.buyUrl;
+
+      const carouselInner = document.getElementById("carouselInner");
+      carouselInner.innerHTML = product.images.map(
+        src => `<div class="carousel-slide"><img src="${src}" alt="Изображение товара"></div>`
+      ).join("");
+
+      currentSlide = 0;
+      updateCarousel();
+      document.getElementById("productModal").style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(event = null) {
+      if (event && event.target !== document.getElementById("productModal")) return;
+      document.getElementById("productModal").style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    function updateCarousel() {
+      const carouselInner = document.getElementById("carouselInner");
+      const totalSlides = document.querySelectorAll(".carousel-slide").length;
+      if (totalSlides === 0) return;
+      carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    document.getElementById("prevBtn").onclick = () => {
+      const totalSlides = document.querySelectorAll(".carousel-slide").length;
+      currentSlide = (currentSlide > 0) ? currentSlide - 1 : totalSlides - 1;
+      updateCarousel();
+    };
+
+    document.getElementById("nextBtn").onclick = () => {
+      const totalSlides = document.querySelectorAll(".carousel-slide").length;
+      currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
+      updateCarousel();
+    };
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
+
+</body>
+</html>
