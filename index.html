@@ -173,6 +173,9 @@
       box-shadow: var(--shadow);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 380px; /* общая высота */
     }
 
     .product-card:hover {
@@ -182,47 +185,59 @@
 
     .product-img {
       width: 100%;
-      height: 180px;
+      height: 240px; /* увеличено — 2/3 карточки */
       object-fit: cover;
       background: #f8f8f8;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
     }
 
     .product-info {
-      padding: 20px;
+      padding: 16px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 120px; /* компактный текст */
     }
 
     .product-title {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       color: #2a2a2a;
     }
 
     .product-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: #555;
-      margin-bottom: 14px;
-      line-height: 1.5;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .product-price {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--btn-pink);
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
 
     .btn-buy {
       background: var(--btn-pink);
       color: white;
       border: none;
-      padding: 11px 22px;
+      padding: 12px 24px;
       border-radius: 50px;
       font-weight: 600;
       font-size: 1.05rem;
       cursor: pointer;
       transition: background 0.3s, transform 0.2s;
       width: 100%;
+      text-align: center;
     }
 
     .btn-buy:hover {
@@ -465,6 +480,8 @@
       .section-title { font-size: 1.6rem; }
       .steps { flex-direction: column; }
       .process { padding: 24px 16px; }
+      .product-card { height: auto; min-height: 360px; }
+      .product-img { height: 200px; }
     }
   </style>
 </head>
@@ -562,7 +579,7 @@
       </div>
 
       <div class="product-card" data-product-id="6">
-       <img src="street.png" alt="Places in the City" class="product-img">
+        <img src="street.png" alt="Places in the City" class="product-img">
         <div class="product-info">
           <h3 class="product-title">Places in the City</h3>
           <p class="product-desc">Городские локации: карта, квест «Помоги Рапунцель найти библиотеку», диалоги в магазине.</p>
@@ -572,7 +589,7 @@
       </div>
 
       <div class="product-card" data-product-id="7">
-       <img src="school.png" alt="School — школа" class="product-img">
+        <img src="school.png" alt="School — школа" class="product-img">
         <div class="product-info">
           <h3 class="product-title">School</h3>
           <p class="product-desc">Школьные предметы, класс, расписание. С игрой «Угадай предмет по звуку» (bell, pencil case...).</p>
@@ -586,7 +603,7 @@
     <h3 style="font-size: 1.6rem; margin: 50px 0 20px; text-align: center; color: #2a2a2a;">Грамматика</h3>
     <div class="products-grid">
       <div class="product-card" data-product-id="8">
-        <img src="https://via.placeholder.com/300x180/ffe0e6/000000?text=Предлоги" alt="Предлоги места и времени" class="product-img">
+        <img src="https://via.placeholder.com/300x240/ffe0e6/000000?text=Предлоги" alt="Предлоги места и времени" class="product-img">
         <div class="product-info">
           <h3 class="product-title">Предлоги</h3>
           <p class="product-desc">Места (in, on, under) + время (at, on, in). С анимированными сценками и игрой «Где кот?»</p>
@@ -596,7 +613,7 @@
       </div>
 
       <div class="product-card" data-product-id="9">
-        <img src="https://via.placeholder.com/300x180/d6eaff/000000?text=Времена" alt="Времена английского глагола" class="product-img">
+        <img src="https://via.placeholder.com/300x240/d6eaff/000000?text=Времена" alt="Времена английского глагола" class="product-img">
         <div class="product-info">
           <h3 class="product-title">Времена</h3>
           <p class="product-desc">Present Simple/Past Simple/Future: схемы, мини-истории, карточки «Что было/будет?»</p>
@@ -606,7 +623,7 @@
       </div>
 
       <div class="product-card" data-product-id="10">
-        <img src="https://via.placeholder.com/300x180/fde0ff/000000?text=Множественное+число" alt="Множественное число существительных" class="product-img">
+        <img src="https://via.placeholder.com/300x240/fde0ff/000000?text=Множественное+число" alt="Множественное число существительных" class="product-img">
         <div class="product-info">
           <h3 class="product-title">Множественное число</h3>
           <p class="product-desc">Правила + исключения. Игра «Собери пару: cat — cats», интерактивная викторина.</p>
@@ -688,7 +705,6 @@
 
   <script>
     const products = {
-      // === СТАРЫЕ ТОВАРЫ (1–3) ===
       1: {
         title: "Игра «Let's Talk!»",
         price: "1 200 ₽",
@@ -722,14 +738,12 @@
         ],
         buyUrl: "https://t.me/HAPPYHELENGR"
       },
-
-      // === НОВЫЕ ТОВАРЫ: АНГЛИЙСКИЙ ПО ТЕМАМ ===
       4: {
         title: "Daily Routine",
         price: "550 ₽",
         description: `Тема «Распорядок дня» для детей 6–10 лет.\n\n⏰ В комплекте:\n• Мини-комикс: «A Day with Elsa»\n• Песенка-хоровод: «I Wake Up, I Brush My Teeth...» (аудио + ноты)\n• Интерактивная таблица: «Собери свой день»\n• 2 игры: «What time is it?» и «Missing Verb»\n\n🎨 Стиль: нежные пастельные тона, персонажи в утренних сценках.`,
         images: [
-          "https://via.placeholder.com/700x420/ffd1dc/000000?text=Мини-комикс+«A+Day+with+Elsa»",
+          "dr.png",
           "https://via.placeholder.com/700x420/ffe0e8/000000?text=Таблица+распорядка+дня",
           "https://via.placeholder.com/700x420/fff0f5/000000?text=Карточки+с+глаголами"
         ],
@@ -740,7 +754,7 @@
         price: "550 ₽",
         description: `Две темы в одном наборе: «Хобби» и «Семья».\n\n👨‍👩‍👧‍👦 Что внутри:\n• Семейное древо с наклейками (parents, grandparents, cousins)\n• Колесо хобби: spin & say («I like swimming»)\n• Карточки «My Family Interview»\n• Аудиодиктант: «This is my brother Tom. He loves drawing...»\n\n💖 Акцент на личном: дети рассказывают о своей семье и увлечениях.`,
         images: [
-          "https://via.placeholder.com/700x420/d0f0ff/000000?text=Семейное+древо+с+наклейками",
+          "fam.png",
           "https://via.placeholder.com/700x420/e0f5ff/000000?text=Колесо+хобби",
           "https://via.placeholder.com/700x420/f0faff/000000?text=Карточки+для+интервью"
         ],
@@ -751,7 +765,7 @@
         price: "600 ₽",
         description: `Погружение в городскую среду через игру.\n\n🏙️ В наборе:\n• Интерактивная карта города (с аптекой, парком, библиотекой...)\n• Квест: «Помоги Рапунцель найти библиотеку» (prepositions + directions)\n• Диалоги: «Where is the museum?», «How can I get to the park?»\n• Игра «Build Your City» — конструктор локаций\n\n🎯 Развивает не только лексику, но и пространственное мышление.`,
         images: [
-          "https://via.placeholder.com/700x420/fde6ff/000000?text=Интерактивная+карта+города",
+          "street.png",
           "https://via.placeholder.com/700x420/fef0ff/000000?text=Квест+«Найди+библиотеку»",
           "https://via.placeholder.com/700x420/fff5fd/000000?text=Диалоги+в+магазинах"
         ],
@@ -762,14 +776,12 @@
         price: "550 ₽",
         description: `Школьная тема — с юмором и атмосферой класса.\n\n🎒 Содержание:\n• Плакат: «School Subjects» с забавными иконками (Math = 🧮, Art = 🎨)\n• Игра «Guess the Subject by Sound»: bell, pencil sharpener, ruler tapping...\n• Диалоги: «What’s your favourite subject?», «Can I go to the toilet?» 😄\n• Мини-проект: «My Dream School»\n\n🎓 Подходит для первого года обучения.`,
         images: [
-          "https://via.placeholder.com/700x420/e6f7ff/000000?text=Плакат+«School+Subjects»",
+          "school.png",
           "https://via.placeholder.com/700x420/f0faff/000000?text=Игра+«Угадай+по+звуку»",
           "https://via.placeholder.com/700x420/f8fdff/000000?text=Диалоги+в+классе"
         ],
         buyUrl: "https://t.me/HAPPYHELENGR"
       },
-
-      // === НОВЫЕ ТОВАРЫ: ГРАММАТИКА ===
       8: {
         title: "Предлоги места и времени",
         price: "650 ₽",
@@ -859,7 +871,3 @@
 
 </body>
 </html>
-
-
-
-
